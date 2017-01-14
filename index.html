@@ -8,10 +8,42 @@
 	<title> ChickTech Data Visualization Workshop </title>
 	<script type="text/javascript" src="d3/d3.v3.min.js"></script>
 </head>
+	<style type="text/css">
+	div.bar {
+		display: inline-block;
+		width: 20px;
+		height: 75px;
+		background-color: purple;
+		margin-right: 2px;
+	}
+	</style>
 <body>
-	<script type="text/javascript">
-		// D3 Code will go here
-		d3.select("body").append("p").text("New paragraph!");
+<script type="text/javascript">
+	var dataset = [];
+	var dataLength = prompt("What how many data points would you like to add ", "Ex: 25" )
+	for (var i = 0; i < dataLength(); i++) {
+		var newNumber = prompt("Which data point " + i + "?")
+    dataset.push(newNumber);
+}
+	d3.select("body").selectAll("div")
+		.data(dataset)
+		.enter()
+		.append("div")
+		.attr("class", "bar")
+		.style("height", function(d) {
+			var barHeight = d * 5;  //Scale up by factor of 5
+	    return barHeight + "px";
+		});
+  //  if (d > 15) {   //Threshold of 15
+  //      return "red";
+  //  } else {
+    //    return "black";
+  //  }
+		//})
+	//	.text(function(d) { // <-- Note tender embrace at left
+  //  return "I can count up to " + d;
+	//
+
 	</script>
 </body>
 </html>
